@@ -1,34 +1,34 @@
 #Matrix. 
 
 
-#Write a class that can represent any 4𝑥4 real matrix. 
-#Include two functions to calculate the sum and dot product of two matrices. 
-#Next, write a program that imports this library module and use it to perform calculations.
-# You CAN'T use numpy.
-#Examples:
-#
-# matrix_1 = Matrix(4.,5.,6.,7.)
-# matrix_2 = Matrix(2.,2.,2.,1.)
-#
-# matrix_3 = matrix_2 @ matrix_1
-# matrix_4 = matrix_2 + matrix_1
+class Matrix():
+    def __init__(self,a=0,b=0,c=0,d=0):
+        self.data=[[a,b],[c,d]]
+    def __add__(self,other):
+        temp=Matrix()    
+        for i in range(2):
+            for j in range(2):
+                temp.data[i][j]=self.data[i][j]+other.data[i][j]
+        return temp
+    def dot(self,other):
+        temp=Matrix()    
+        for i in range(2):
+            for j in range(2):
+                temp.data[i][j]=self.data[i][j]*other.data[i][j]
+        return temp
+    def __repr__(self):
+        return str(self.data)
+
+matrix_1 = Matrix(4.,5.,6.,7.)
+matrix_2 = Matrix(2.,2.,2.,1.)
+
+matrix_3 = matrix_2.dot(matrix_1)
+matrix_4 = matrix_2 + matrix_1
 # matrix_4 = 6 + matrix_1
 # matrix_4 = matrix_1 + 6
-#
-# expand your solution to include other operations like
-# - subtraction 
-# - inversion
-# - string representation 
-#
-#Try to expand your implementation as best as you can. 
-#Think of as many features as you can, and try implementing them.
-#Make intelligent use of pythons syntactic sugar (overloading, iterators, generators, etc)
-#Most of all: CREATE GOOD, RELIABLE, READABLE CODE.
-#The goal of this task is for you to SHOW YOUR BEST python programming skills.
-#Impress everyone with your skills, show off with your code.
-#
-#Your program must be runnable with command "python task.py".
-#Show some usecases of your library in the code (print some things)
-#Delete these comments before commit!
-#
-#Good luck.
+print(matrix_1)
+print(matrix_2)
+print("dot product of matrixes:")
+print(matrix_3)
+print("sum of matrixes:")
+print(matrix_4)
